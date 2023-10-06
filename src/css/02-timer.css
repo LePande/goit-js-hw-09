@@ -1,0 +1,63 @@
+.container {
+  width: 600px;
+  background-color: rgb(192, 209, 251);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 7px;
+}
+
+.timer {
+  width: 450px;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+
+  gap: 30px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.field .value {
+  background-color: rgb(68, 108, 209);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 5px 5px 0 0;
+}
+
+.field .label {
+  background-color: rgb(12, 32, 82);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 0 0 5px 5px;
+}
+
+[data-start] {
+  width: 60px;
+  height: 30px;
+  margin: 10px 0;
+  background-color: rgb(219, 126, 126);
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+#datetime-picker {
+  color: rgb(68, 108, 209);
+  text-align: center;
+  border-radius: 5px;
+  border: none;
+  padding: 10px 0;
+  font-weight: 700;
+}

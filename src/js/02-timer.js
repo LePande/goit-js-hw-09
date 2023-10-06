@@ -1,5 +1,5 @@
-// import flatpickr from '../../node_modules/flatpickr';
-// import '../../node_modules/flatpickr/dist/flatpickr.min.css';
+import flatpickr from 'flatpickr';
+import 'flatpickr/dist/flatpickr.min.css';
 
 const options = {
   enableTime: true,

@@ -36,10 +36,10 @@ formSelection.addEventListener('submit', e => {
     const delayValue = firstDelayValue + (i - 1) * delayStepsValue;
     createPromise(i, delayValue)
       .then(({ position, delay }) => {
-        console.log(`Promesa Cumplida ${position}, en ${delay}ms`);
+        console.log(`✅ Promesa Cumplida ${position}, en ${delay}ms`);
       })
       .catch(({ position, delay }) => {
-        console.log(`Promesa Rechazada ${position}, en ${delay}ms`);
+        console.log(`❌ Promesa Rechazada ${position}, en ${delay}ms`);
       });
   }
 });
