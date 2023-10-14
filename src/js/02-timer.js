@@ -6,45 +6,46 @@ const options = {
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
-  onClose(selectedDates) {
-    const selectedDate = selectedDates[0];
-
-    if (selectedDate <= new Date()) {
-      alert('Por favor, elige una fecha en el futuro.');
-    } else {
-      document.querySelector('[data-start]').removeAttribute('disabled');
-
-      const endDate = selectedDate;
-      const timerInterval = 1000;
-
-      function updateTimer() {
-        const currentTime = new Date();
-        const timeLeft = endDate - currentTime;
-
-        if (timeLeft <= 0) {
-          clearInterval(timerId);
-          alert('¡Tiempo agotado!');
-          return;
-        }
-
-        const { days, hours, minutes, seconds } = convertMs(timeLeft);
-
-        document.querySelector('[data-days]').textContent =
-          addLeadingZero(days);
-        document.querySelector('[data-hours]').textContent =
-          addLeadingZero(hours);
-        document.querySelector('[data-minutes]').textContent =
-          addLeadingZero(minutes);
-        document.querySelector('[data-seconds]').textContent =
-          addLeadingZero(seconds);
-      }
-
-      const timerId = setInterval(updateTimer, timerInterval);
-    }
-  },
 };
 
-flatpickr('#datetime-picker', options);
+const dateTimePicker = flatpickr('#datetime-picker', options);
+let timerId;
+
+document.querySelector('[data-start]').addEventListener('click', function () {
+  const selectedDate = dateTimePicker.selectedDates[0];
+
+  if (selectedDate && selectedDate > new Date()) {
+    startTimer(selectedDate);
+  } else {
+    alert('Por favor, elige una fecha en el futuro.');
+  }
+});
+
+function startTimer(endDate) {
+  const timerInterval = 1000;
+
+  function updateTimer() {
+    const currentTime = new Date();
+    const timeLeft = endDate - currentTime;
+
+    if (timeLeft <= 0) {
+      clearInterval(timerId);
+      alert('¡Tiempo agotado!');
+      return;
+    }
+
+    const { days, hours, minutes, seconds } = convertMs(timeLeft);
+
+    document.querySelector('[data-days]').textContent = addLeadingZero(days);
+    document.querySelector('[data-hours]').textContent = addLeadingZero(hours);
+    document.querySelector('[data-minutes]').textContent =
+      addLeadingZero(minutes);
+    document.querySelector('[data-seconds]').textContent =
+      addLeadingZero(seconds);
+  }
+
+  timerId = setInterval(updateTimer, timerInterval);
+}
 
 function convertMs(ms) {
   const second = 1000;
