@@ -15,6 +15,7 @@ document.querySelector('[data-start]').addEventListener('click', function () {
   const selectedDate = dateTimePicker.selectedDates[0];
 
   if (selectedDate && selectedDate > new Date()) {
+    document.querySelector('[data-start]').setAttribute('disabled', 'true');
     startTimer(selectedDate);
   } else {
     alert('Por favor, elige una fecha en el futuro.');
